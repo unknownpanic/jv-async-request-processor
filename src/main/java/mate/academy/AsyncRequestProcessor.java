@@ -1,7 +1,6 @@
 package mate.academy;
 
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executor;
@@ -26,7 +25,7 @@ public class AsyncRequestProcessor {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            return UUID.randomUUID().toString();
+            return "Details for " + userId;
         }, executor).thenApply(details -> {
             UserData userData = new UserData(userId, details);
             cache.put(userId, userData);
